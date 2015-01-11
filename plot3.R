@@ -5,7 +5,9 @@ household_power_consumption <- read.csv("./Dataset/household_power_consumption.t
 household_power_consumption$Date <- as.Date(household_power_consumption$Date, "%d/%m/%Y")
 
 #Get subset of data
-dataSubset <- subset(household_power_consumption, household_power_consumption$Date >= as.Date("2007-02-01") & household_power_consumption$Date <= as.Date("2007-02-02"))
+dataSubset <- subset(household_power_consumption, 
+                     household_power_consumption$Date >= as.Date("2007-02-01") & 
+                     household_power_consumption$Date <= as.Date("2007-02-02"))
 
 # Remove full dataset
 rm(household_power_consumption)
@@ -21,6 +23,8 @@ with(dataSubset, {
   lines(Sub_metering_2~Datetime,col='Red')
   lines(Sub_metering_3~Datetime,col='Blue')
 })
+
+# Create the legend and put it on the top right
 legend("topright", col=c("black", "red", "blue"), lty=1, lwd=2,
        legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
 
